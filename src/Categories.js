@@ -59,10 +59,10 @@ const Category = styled.div`
         props.active &&
         css`
             font-weight: 600;
-            border-bottom: 2px solid purple;
+            border-bottom: 5px solid hotpink;
             color: red;
             &:hover {
-                color: #3bc9db;
+                color: green;
             }
         `}
 
