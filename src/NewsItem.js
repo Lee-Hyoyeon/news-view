@@ -1,7 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const NewsItemBlock = styled.div`
     display: flex;
+
     .thumbnail {
         margin-right: 1rem;
         img {
@@ -30,7 +32,9 @@ const NewsItemBlock = styled.div`
 `;
 
 const NewsItem = ({ article }) => {
-    const { title, description, url, urlToImage } = article;
+    const { title, description, url, urlToImage, source } = article;
+    // console.log(source.name);
+
     return (
         <NewsItemBlock>
             {urlToImage && (

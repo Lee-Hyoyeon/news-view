@@ -1,4 +1,7 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import NewsItem from './NewsItem';
 
 const NewsListBlock = styled.div`
     box-sizing: border-box;
@@ -14,7 +17,27 @@ const NewsListBlock = styled.div`
     }
 `;
 
-const NewsList = ({ category }) => {
+const NewsList = () => {
+    const [articles, setArticles] = useState(null);
+    const [loading, setLoding] = useState(false);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoding(true);
+            try {
+                const response = await axios.get(
+                    'https://newsapi.org/v2/top-headlines?country=kr&apiKey=20d572f0030748489213032ca15023b1',
+                );
+                setArticles(response.data.articles);
+            } catch (e) {
+                console.log(e);
+            }
+            setLoding(false);
+        };
+
+        fetchData();
+    }, []);
+
     //대기중
     if (loading) {
         console.log(loading);
@@ -29,8 +52,11 @@ const NewsList = ({ category }) => {
     //articles  유효할때
     return (
         <NewsListBlock>
-            {articles.map((article) => (
+            {/* {articles.map((article) => (
                 <NewsItem key={article.url} article={article} />
+            ))} */}
+            {articles.map((arti) => (
+                <NewsItem key={articles.url} article={arti} />
             ))}
         </NewsListBlock>
     );
