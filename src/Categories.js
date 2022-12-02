@@ -27,7 +27,7 @@ const categories = [
         text: '스포츠',
     },
     {
-        name: 'tech',
+        name: 'technology',
         text: '기술',
     },
 ];
