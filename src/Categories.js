@@ -43,6 +43,7 @@ const CategoriesBlock = styled.div`
     }
 `;
 
+// const Category = styled.div`
 const Category = styled.div`
     font-size: 1.2rem;
     cursor: pointer;
