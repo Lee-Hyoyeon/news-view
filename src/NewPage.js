@@ -4,7 +4,7 @@ import Categories from './Categories';
 import NewsList from './NewsList';
 
 const NewPage = () => {
-    const category = useParams('all');
+    const { category } = useParams('all');
 
     return (
         <div>

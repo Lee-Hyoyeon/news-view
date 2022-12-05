@@ -33,7 +33,7 @@ const categories = [
     },
 ];
 
-const CategoriesBlock = styled.div`
+const CategoriesBlock = styled(NavLink)`
     display: flex;
     padding: 1rem;
     width: 768px;
@@ -44,7 +44,7 @@ const CategoriesBlock = styled.div`
     }
 `;
 
-const Category = styled(NavLink)`
+const Category = styled.div`
     font-size: 1.125rem;
     cursor: pointer;
     white-space: pre;
@@ -66,17 +66,25 @@ const Category = styled(NavLink)`
         margin-left: 1rem;
     }
 `;
-const Categories = ({ onSelect }) => {
+
+const Categories = () => {
     return (
         <CategoriesBlock>
             {categories.map((c) => (
-                <Category
-                    key={c.name}
-                    activeClassName="active"
-                    exact={c.name === 'all'}
-                    to={c.name === 'all' ? '/' : `/${c.name}`}
-                >
-                    {c.text}
+                <Category>
+                    {/* key={c.name} */}
+                    {/* className={(isActive) => (isActive ? 'active' : '')} */}
+                    {/* to={c.name === 'all' ? '/' : `/${c.name}`} */}
+                    {/* <NavLink className={(navData) => navData.isActive ? "active" : "" } to="/about" /> */}
+
+                    {/* className 속성 */}
+                    <NavLink
+                        key={c.name}
+                        to={c.name === 'all' ? '/' : `/${c.name}`}
+                        className={({ isActive }) => {}}
+                    >
+                        {c.text}
+                    </NavLink>
                 </Category>
             ))}
         </CategoriesBlock>
