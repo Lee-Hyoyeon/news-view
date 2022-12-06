@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useCallback, useState } from 'react';
-import { Route, Router, Routes } from 'react-router';
+import { Link, Route, Router, Routes } from 'react-router-dom';
 import './App.css';
 import Categories from './Categories';
 import NewPage from './NewPage';
@@ -19,10 +19,16 @@ function App() {
 }
 
 // function App() {
+//     const [category, setCategory] = useState('all');
+//     const onSelect = useCallback((category) => setCategory(category), []);
 //     return (
-//         <Routes>
-//             <Route path="/:category?" element={NewPage} exact={true} />;
-//         </Routes>
+//         <div>
+//             <Categories category={category} onSelect={onSelect} />
+//             <NewsList ct={category} />
+//             <Routes>
+//                 <Route path="/:category?" element={NewPage} exact={true} />;
+//             </Routes>
+//         </div>
 //     );
 // }
 

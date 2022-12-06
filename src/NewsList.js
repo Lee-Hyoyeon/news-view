@@ -60,9 +60,6 @@ const NewsList = ({ ct }) => {
     //articles  유효할때
     return (
         <NewsListBlock>
-            {/* {articles.map((article) => (
-                <NewsItem key={article.url} article={article} />
-            ))} */}
             {articles.map((arti) => (
                 <NewsItem key={articles.url} article={arti} />
             ))}

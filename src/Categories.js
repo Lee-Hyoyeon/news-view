@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { NavLink } from 'react-router-dom';
 
 const categories = [
     {
@@ -33,7 +32,7 @@ const categories = [
     },
 ];
 
-const CategoriesBlock = styled(NavLink)`
+const CategoriesBlock = styled.div`
     display: flex;
     padding: 1rem;
     width: 768px;
@@ -44,47 +43,45 @@ const CategoriesBlock = styled(NavLink)`
     }
 `;
 
+// const Category = styled.div`
 const Category = styled.div`
-    font-size: 1.125rem;
+    font-size: 1.2rem;
     cursor: pointer;
     white-space: pre;
     text-decoration: none;
-    color: inherit;
-    padding-bottom: 0.25rem;
+    color: purple;
+    padding-bottom: 0.24rem;
+
     &:hover {
-        color: #495057;
+        color: aliceblue;
     }
-    &.active {
-        font-weight: 600;
-        border-bottom: 2px solid #22b8cf;
-        color: #22b8cf;
-        &:hover {
-            color: #3bc9db;
-        }
-    }
+
+    ${(props) =>
+        props.active &&
+        css`
+            font-weight: 600;
+            border-bottom: 5px solid hotpink;
+            color: red;
+            &:hover {
+                color: green;
+            }
+        `}
+
     & + & {
         margin-left: 1rem;
     }
 `;
 
-const Categories = () => {
+const Categories = ({ onSelect, category }) => {
     return (
         <CategoriesBlock>
             {categories.map((c) => (
-                <Category>
-                    {/* key={c.name} */}
-                    {/* className={(isActive) => (isActive ? 'active' : '')} */}
-                    {/* to={c.name === 'all' ? '/' : `/${c.name}`} */}
-                    {/* <NavLink className={(navData) => navData.isActive ? "active" : "" } to="/about" /> */}
-
-                    {/* className 속성 */}
-                    <NavLink
-                        key={c.name}
-                        to={c.name === 'all' ? '/' : `/${c.name}`}
-                        className={({ isActive }) => {}}
-                    >
-                        {c.text}
-                    </NavLink>
+                <Category
+                    key={c.name}
+                    active={category === c.name}
+                    onClick={() => onSelect(c.name)}
+                >
+                    {c.text} {/* 카테고리 이름 */}
                 </Category>
             ))}
         </CategoriesBlock>
